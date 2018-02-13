@@ -20,3 +20,6 @@ python mtcnn.py test_image.jpg
 
 # Note
 - Because the model is designed to work with opencv, so the input image format is BGR instead of RGB.
+
+# TODO
+- [ ] Upload the model convert script (The code is too dirty right now).
