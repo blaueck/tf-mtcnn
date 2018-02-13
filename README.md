@@ -15,6 +15,14 @@ This project provide a **single** tensorflow model implemented the mtcnn face de
 python mtcnn.py test_image.jpg
 ```
 
+# Convert model
+```bash
+# download model from original project
+git clone https://github.com/kpzhang93/MTCNN_face_detection_alignment
+# convert model
+python caffe2tf.py MTCNN_face_detection_alignment/code/codes/MTCNNv1/model ./mtcnn.pb
+```
+
 # Result
 ![result.jpg](./result.jpg)
 
@@ -28,6 +36,4 @@ python mtcnn.py test_image.jpg
 
 # Note
 - Because the model is designed to work with opencv, so the input image format is BGR instead of RGB.
-
-# TODO
-- [ ] Upload the model convert script (The code is too dirty right now).
+- The convert code make the model more suitable for tensorflow and opencv by modifying the model's parameters. 
