@@ -1,4 +1,4 @@
-# Description
+ # Description
 This project provide a **single** tensorflow model implemented the mtcnn face detector.
  It is very handy for face detection in python. The model is converted and
  modified from the original author's caffe model.
@@ -16,6 +16,8 @@ python mtcnn.py test_image.jpg
 ```
 
 # Convert model
+The default model `mtcnn.pb` will work well. But if you want modify the model behave, you may want
+to convert the model yourself.
 ```bash
 # download model from original project
 git clone https://github.com/kpzhang93/MTCNN_face_detection_alignment
@@ -35,5 +37,6 @@ python caffe2tf.py MTCNN_face_detection_alignment/code/codes/MTCNNv1/model ./mtc
 - landmarks: face landmarks, 2D float tensor with format[[y1, y2, y3, y4, y5, x1, x2, x3, x4, x5], ...]
 
 # Note
-- Because the model is designed to work with opencv, so the input image format is BGR instead of RGB.
+- Because the model is designed to work with opencv, so the input image format is BGR instead of RGB. If 
+you prefer RGB, you can modify the convert script and convert the model yourself.
 - The convert code make the model more suitable for tensorflow and opencv by modifying the model's parameters. 
