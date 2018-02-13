@@ -16,7 +16,7 @@ python mtcnn.py test_image.jpg
 ```
 
 # Convert model
-The default model `mtcnn.pb` will work well. But if you want modify the model behave, you may want
+The default model `mtcnn.pb` will work well. But if you want to modify the model's behave, you may want
 to convert the model yourself.
 ```bash
 # download model from original project
