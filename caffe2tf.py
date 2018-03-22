@@ -55,7 +55,7 @@ def conv_t(var, v, *args):
     # transpose wh to hw
     v = v.transpose(3, 2, 1, 0)
 
-    # change input image from rgb to gbr
+    # change input image from rgb to bgr
     if 'conv1' in var.name:
         v = v[:, :, ::-1, :]
     
