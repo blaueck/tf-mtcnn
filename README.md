@@ -14,7 +14,14 @@ This project provide a **single** tensorflow model implemented the mtcnn face de
 
 # Run
 ```bash
+# simple detection demo
 python mtcnn.py test_image.jpg
+
+# A demo shows how to use tensorflow dataset api
+# to accelerate detection with multi-cores. This is
+# especially useful for processing large amount of
+# small image data in a powerful server.
+python mtcnn_data.py imglist.txt result
 ```
 
 # Convert model
