@@ -3,12 +3,18 @@ import argparse
 import tensorflow as tf
 
 def preprocess(path):
+    # read file from disk
     raw_str = tf.read_file(path)
+    
+    # decode image
     img = tf.image.decode_image(raw_str, 3)
     img.set_shape([None, None, 3])
+    
+    # convert image from RGB to BGR
     img = tf.reverse(img, [2])
     img = tf.to_float(img)
 
+    # import mtcnn model
     with open('./mtcnn.pb', 'rb') as f:
         gd = tf.GraphDef.FromString(f.read())
         prob, landmarks, box = tf.import_graph_def(
@@ -24,22 +30,24 @@ def preprocess(path):
 def main(args):
 
     with tf.device('/cpu:0'):
+        # build dataset
         dataset = (tf.data
             .TextLineDataset(args.imglist)
-            .map(preprocess, 8)
-            .prefetch(1))
+            .map(preprocess, 8)             # processing data with multi-threads
+            .prefetch(1))                   # prefetch in other thread
         iterator = dataset.make_one_shot_iterator()
         path, prob, landmarks, box = iterator.get_next()
-
+    
+    # build session
     config = tf.ConfigProto(
         allow_soft_placement=True, log_device_placement=False,
         intra_op_parallelism_threads=16, inter_op_parallelism_threads=16)
     config.gpu_options.allow_growth = True
     sess = tf.Session(config=config)
-
+    
+    # handle detection results
     dst_list = open(args.dst + '.list', 'w')
     dst_pts = open(args.dst + '.pts', 'w')
-
     try:
         while True:
             p, lm = sess.run([path, landmarks])
