@@ -10,7 +10,7 @@ This project provide a **single** tensorflow model implemented the mtcnn face de
 # Requirement
 - tensorflow >= 1.5.0 (older version may work as well, but it is not tested)
 - opencv python binding (for reading image and show the result)
-- pycaffe (for convert model from caffe to tensorflow)
+- pycaffe (optional, for convert model from caffe to tensorflow)
 
 # Run
 ```bash
