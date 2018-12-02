@@ -46,6 +46,7 @@ python caffe2tf.py MTCNN_face_detection_alignment/code/codes/MTCNNv1/model ./mtc
 - landmarks: face landmarks, 2D float tensor with format[[y1, y2, y3, y4, y5, x1, x2, x3, x4, x5], ...]
 
 # Note
+- The pre-converted model mtcnn.pb is not compatible with newer version of tensorflow 1.12. You may consider to convert the model your self.
 - Because the model is designed to work with opencv, so the input image format is BGR instead of RGB. If 
 you prefer RGB, you can modify the convert script and convert the model yourself.
 - The convert code make the model more suitable for tensorflow and opencv by modifying the model's parameters. 
