@@ -17,6 +17,9 @@ This project provide a **single** tensorflow model implemented the mtcnn face de
 # simple detection demo
 python mtcnn.py test_image.jpg
 
+# for tensorflow 2.0
+python mtcnn_tfv2.py test_image.jpg
+
 # A demo shows how to use tensorflow dataset api
 # to accelerate detection with multi-cores. This is
 # especially useful for processing large amount of
